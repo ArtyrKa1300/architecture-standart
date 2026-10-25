@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.8.4">
+  <diagram id="components" name="ADR-002 · C4 Components · сервис депозитов">
+    <mxGraphModel dx="2280" dy="1380" grid="1" gridSize="10" page="1" pageWidth="2280" pageHeight="1380" pageScale="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="ADR-002 · C4 Components · сервис депозитов" style="text;html=0;fontSize=26;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="30" y="15" width="2220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Фокус: только публичные ставки. Выгрузка берёт один согласованный snapshot; версии и lease хранятся в MS SQL." style="text;html=0;fontSize=15;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="30" y="60" width="2220" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="scope" value="Сервис депозитов [Container: Java Spring Boot]" style="rounded=0;dashed=1;fillColor=#f8fafc;strokeColor=#64748b;verticalAlign=top;align=left;spacing=12;fontSize=18;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="480" y="280" width="1370" height="860" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-0" value="CC-UC1: consume event" edge="1" parent="1" source="broker" target="projection" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480.0" y="205.0" />
+              <mxPoint x="480.0" y="450.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="CC-UC1: upsert version" edge="1" parent="1" source="projection" target="repo" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1155.0" y="450.0" />
+              <mxPoint x="1155.0" y="460.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2" value="CC-UC2: HTTPS GET" edge="1" parent="1" source="cc" target="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480.0" y="685.0" />
+              <mxPoint x="480.0" y="750.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3" value="CC-UC2: read public rates" edge="1" parent="1" source="api" target="repo" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1155.0" y="750.0" />
+              <mxPoint x="1155.0" y="460.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="CC-UC3: запуск" edge="1" parent="1" source="schedule" target="export" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1155.0" y="1025.0" />
+              <mxPoint x="1155.0" y="860.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-5" value="CC-UC3/5: snapshot / journal" edge="1" parent="1" source="export" target="repo" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1540.0" y="660.0" />
+              <mxPoint x="1540.0" y="660.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-6" value="SQL: проекция / lease / журнал" edge="1" parent="1" source="repo" target="db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1810" y="440" />
+              <mxPoint x="1810" y="1260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-7" value="CC-UC3/5: SFTP&#10;files / ACK" edge="1" parent="1" source="export" target="sftp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1835.0" y="860.0" />
+              <mxPoint x="1835.0" y="860.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="broker" value="Kafka / deposit.rates&#10;[External Container]" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="150" width="350" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cc" value="Backend кол-центра&#10;[External Container]" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="630" width="350" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="projection" value="Rates Projection Consumer&#10;[Component]&#10;Проверяет approved/version" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#dcfce7;strokeColor=#16a34a;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="380" width="420" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="Public Rates API&#10;[Component]&#10;Auth, validFrom/validTo, только общие" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#dcfce7;strokeColor=#16a34a;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="680" width="420" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="repo" value="Rates Repository&#10;[Component]&#10;Чтение snapshot / атомарная смена версии" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#dcfce7;strokeColor=#16a34a;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="380" width="420" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="schedule" value="Scheduler + lease&#10;[Component]&#10;Один запуск на версию" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#dcfce7;strokeColor=#16a34a;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="960" width="420" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="export" value="Snapshot Exporter&#10;[Component]&#10;CSV/manifest; SFTP; retry/ACK" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#dcfce7;strokeColor=#16a34a;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="780" width="420" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="Deposits DB&#10;[External Container: MS SQL]&#10;Read-модель + export journal/lease" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="1200" width="420" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="sftp" value="SFTP банка&#10;[External Container]&#10;Файлы и ACK партнёра" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1920" y="780" width="300" height="160" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
