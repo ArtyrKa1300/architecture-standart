@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.8.4">
+  <diagram id="containers" name="ADR-001 · C4 Containers · интернет-банк и АБС">
+    <mxGraphModel dx="2580" dy="1850" grid="1" gridSize="10" page="1" pageWidth="2580" pageHeight="1850" pageScale="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="ADR-001 · C4 Containers · интернет-банк и АБС" style="text;html=0;fontSize=26;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="30" y="15" width="2520" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Новые Java-сервисы совместимы с Kafka; старый ASP.NET-монолит работает с ними по HTTPS. Legacy-платежи остаются отдельно." style="text;html=0;fontSize=15;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="30" y="60" width="2520" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ib-boundary" value="Интернет-банк и новое депозитное расширение [Software System]" style="rounded=0;dashed=1;fillColor=#f8fafc;strokeColor=#64748b;verticalAlign=top;align=left;spacing=12;fontSize=18;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="40" y="270" width="1280" height="1130" as="geometry" />
+        </mxCell>
+        <mxCell id="abs-boundary" value="АБС [Software System]" style="rounded=0;dashed=1;fillColor=#f8fafc;strokeColor=#64748b;verticalAlign=top;align=left;spacing=12;fontSize=18;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1710" y="270" width="820" height="1130" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-0" value="UC3/4/7: HTTPS" edge="1" parent="1" source="user" target="legacy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220.0" y="290.0" />
+              <mxPoint x="260.0" y="290.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="SQL: прежние функции" edge="1" parent="1" source="legacy" target="legacydb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260.0" y="607.5" />
+              <mxPoint x="260.0" y="607.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2" value="UC3/4/7: HTTPS REST&#10;Доверенная идентичность" edge="1" parent="1" source="legacy" target="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="505.0" y="422.5" />
+              <mxPoint x="505.0" y="430.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3" value="SQL: заявка + outbox атомарно" edge="1" parent="1" source="api" target="db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="770.0" y="615.0" />
+              <mxPoint x="770.0" y="615.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="UC4: создать / проверить OTP&#10;HTTPS" edge="1" parent="1" source="api" target="otp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="455" />
+              <mxPoint x="1040" y="1105" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-5" value="SQL: challenge / задания" edge="1" parent="1" source="otp" target="otpdb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="505.0" y="1105.0" />
+              <mxPoint x="505.0" y="1115.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-6" value="UC4/5/6: отправка СМС&#10;HTTPS" edge="1" parent="1" source="otp" target="sms" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="1440" />
+              <mxPoint x="225" y="1440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-7" value="UC2/4: publish команды / лиды" edge="1" parent="1" source="api" target="kafka" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1520" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-8" value="UC1/5/6: consume ставки / статусы" edge="1" parent="1" source="kafka" target="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1180" y="740" />
+              <mxPoint x="1180" y="485" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-9" value="UC5/6: уведомления" edge="1" parent="1" source="kafka" target="otp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1520" y="1230" />
+              <mxPoint x="770" y="1230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-10" value="UC4: команды" edge="1" parent="1" source="kafka" target="adapter" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1720.0" y="775.0" />
+              <mxPoint x="1720.0" y="740.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-11" value="UC1/5/6: ставки / статусы" edge="1" parent="1" source="adapter" target="kafka" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1960" y="920" />
+              <mxPoint x="1520" y="920" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-12" value="PL-SQL: ограниченный интерфейс&#10;UC1/5/6 + inbox/outbox" edge="1" parent="1" source="adapter" target="oracle" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2130.0" y="740.0" />
+              <mxPoint x="2130.0" y="1077.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-13" value="UC1/5/6: ставки / открытие" edge="1" parent="1" source="staff" target="delphi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2305.0" y="295.0" />
+              <mxPoint x="2290.0" y="295.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-14" value="Ролевые PL-SQL процедуры" edge="1" parent="1" source="delphi" target="oracle" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2500" y="425" />
+              <mxPoint x="2500" y="1075" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-15" value="UC2: HTTPS каталог / лид" edge="1" parent="1" source="site" target="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1280" y="1510" />
+              <mxPoint x="1280" y="600" />
+              <mxPoint x="900" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-16" value="UC2: deposit.leads" edge="1" parent="1" source="kafka" target="cc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="user" value="Клиент интернет-банка&#10;[Person]" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#fef3c7;strokeColor=#b45309;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="130" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="legacy" value="Web / legacy-монолит&#10;[Container: ASP.NET MVC 4.5]&#10;Вход, платежи, новые экраны" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#e0f2fe;strokeColor=#0284c7;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="350" width="340" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="legacydb" value="Legacy DB&#10;[Container: MS SQL]&#10;Данные интернет-банка" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#e0f2fe;strokeColor=#0284c7;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="720" width="340" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="Сервис депозитов&#10;[Container: Java Spring Boot]&#10;Каталог, заявки, статусы; outbox relay" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#e0f2fe;strokeColor=#0284c7;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="580" y="350" width="380" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="Deposits DB&#10;[Container: MS SQL]&#10;Read-модель, заявки, outbox" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#e0f2fe;strokeColor=#0284c7;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="580" y="720" width="380" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="otp" value="Подтверждения и уведомления&#10;[Container: Java Spring Boot]&#10;OTP и задания СМС" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#e0f2fe;strokeColor=#0284c7;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="580" y="1030" width="380" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="otpdb" value="Notifications DB&#10;[Container: MS SQL]&#10;Challenge, повторы доставки" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#e0f2fe;strokeColor=#0284c7;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="1050" width="340" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="kafka" value="Kafka&#10;[Container: message broker]&#10;commands / status / rates / leads / notifications" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="680" width="260" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="adapter" value="Адаптер АБС&#10;[Container: Java Spring Boot]&#10;Kafka ↔ inbox/outbox; лимиты" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#e0f2fe;strokeColor=#0284c7;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1790" y="660" width="340" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="oracle" value="Oracle / PL-SQL&#10;[Container: database + business logic]&#10;Ставки, счета, договоры, inbox/outbox" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#e0f2fe;strokeColor=#0284c7;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="2130" y="990" width="340" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="delphi" value="Рабочие места АБС&#10;[Container: Delphi]&#10;Ролевой UI бэк-/фронт-офиса" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#e0f2fe;strokeColor=#0284c7;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="2110" y="350" width="360" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="staff" value="Бэк-офисы и фронт-офис&#10;[Person]&#10;Разделённые полномочия" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#fef3c7;strokeColor=#b45309;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="2130" y="130" width="350" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="site" value="Сайт&#10;[External System: PHP/React]&#10;Публичные ставки / лиды" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="570" y="1510" width="370" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="cc" value="Система кол-центра&#10;[External System: Java/React/PG]&#10;Получает лиды, звонит" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="1510" width="370" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="sms" value="СМС-шлюз → оператор&#10;[External System]&#10;Доставка клиенту" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1510" width="350" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Legacy: ASP.NET → Oracle для платежей и текущих счетов сохраняется, но не используется для новых депозитов.&#10;Стрелки Kafka показывают логическое направление данных; подтверждения доставки подразумеваются.&#10;Два ЦОД: stateless-экземпляры + HA/DR БД; принятые команды восстанавливаются из outbox, consumer'ы идемпотентны." style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#fff7ed;strokeColor=#c2410c;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1690" width="2480" height="130" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

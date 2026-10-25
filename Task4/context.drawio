@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.8.4">
+  <diagram id="context" name="ADR-002 · C4 Context · ставки для кол-центров">
+    <mxGraphModel dx="2110" dy="1240" grid="1" gridSize="10" page="1" pageWidth="2110" pageHeight="1240" pageScale="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="ADR-002 · C4 Context · ставки для кол-центров" style="text;html=0;fontSize=26;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="30" y="15" width="2050" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Показаны только изменения передачи ставок. Общий каталог переиспользуется из ADR-001. Персональные данные партнёру не передаются." style="text;html=0;fontSize=15;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="30" y="60" width="2050" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-0" value="CC-UC1: согласование" edge="1" parent="1" source="back" target="abs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="245.0" y="380.0" />
+              <mxPoint x="245.0" y="380.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="CC-UC1: версии ставок&#10;адаптер + Kafka" edge="1" parent="1" source="abs" target="deposits" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="565.0" y="565.0" />
+              <mxPoint x="565.0" y="570.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2" value="CC-UC2: консультация" edge="1" parent="1" source="operator" target="cc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1290.0" y="210.0" />
+              <mxPoint x="1290.0" y="225.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3" value="CC-UC2: HTTPS API&#10;только общие ставки" edge="1" parent="1" source="cc" target="deposits" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1320.0" y="225.0" />
+              <mxPoint x="1320.0" y="570.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="CC-UC3: публикация файлов&#10;CC-UC5: проверка ACK" edge="1" parent="1" source="deposits" target="sftp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="915.0" y="800.0" />
+              <mxPoint x="915.0" y="800.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-5" value="CC-UC3: SFTP download&#10;CSV + manifest" edge="1" parent="1" source="sftp" target="partner" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1320.0" y="1025.0" />
+              <mxPoint x="1320.0" y="1025.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-6" value="CC-UC3/5: ACK" edge="1" parent="1" source="partner" target="sftp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1745" y="1160" />
+              <mxPoint x="915" y="1160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-7" value="CC-UC4: локальные ставки" edge="1" parent="1" source="partnerop" target="partner" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1720.0" y="800.0" />
+              <mxPoint x="1745.0" y="800.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="back" value="Кредитный / депозитный бэк-офис&#10;[Person]" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#fef3c7;strokeColor=#b45309;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="150" width="370" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="abs" value="АБС&#10;[Software System]&#10;Утверждает версии ставок" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#2563eb;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="490" width="370" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="deposits" value="Депозитное расширение интернет-банка&#10;[Software System]&#10;Публичные ставки и выгрузка" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#2563eb;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="490" width="430" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="cc" value="Система кол-центра банка&#10;[Software System]&#10;Показывает актуальную версию" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#2563eb;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="150" width="420" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="operator" value="Оператор банка&#10;[Person]" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#fef3c7;strokeColor=#b45309;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="150" width="370" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sftp" value="Файловый шлюз банка&#10;[Software System: SFTP]&#10;CSV + manifest + ACK" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#2563eb;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="950" width="430" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="partner" value="Система партнёрского кол-центра&#10;[External Software System]&#10;Импортирует публичные ставки" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="950" width="470" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="partnerop" value="Оператор партнёра&#10;[Person]" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#fef3c7;strokeColor=#b45309;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="530" width="420" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

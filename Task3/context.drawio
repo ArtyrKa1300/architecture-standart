@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.8.4">
+  <diagram id="context" name="ADR-001 · C4 Context · MVP депозитов">
+    <mxGraphModel dx="2180" dy="1440" grid="1" gridSize="10" page="1" pageWidth="2180" pageHeight="1440" pageScale="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="ADR-001 · C4 Context · MVP депозитов" style="text;html=0;fontSize=26;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="30" y="15" width="2120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Фокус: интернет-банк и его новое депозитное расширение. Внутренние контейнеры раскрыты на следующей диаграмме." style="text;html=0;fontSize=15;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="30" y="60" width="2120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-0" value="UC3/4/7: условия, код, статус&#10;HTTPS" edge="1" parent="1" source="customer" target="ib" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="510.0" y="207.5" />
+              <mxPoint x="510.0" y="250.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="UC2: публичная заявка&#10;HTTPS" edge="1" parent="1" source="new" target="site" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="510.0" y="720.0" />
+              <mxPoint x="510.0" y="720.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2" value="UC2: каталог и сохранение лида&#10;HTTPS API" edge="1" parent="1" source="site" target="ib" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="830.0" y="495.0" />
+              <mxPoint x="860.0" y="495.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3" value="UC1/5/6: заявки, ставки, статусы&#10;Асинхронно через адаптер/Kafka" edge="1" parent="1" source="ib" target="abs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1260.0" y="250.0" />
+              <mxPoint x="1260.0" y="250.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="UC1/5/6: согласование / открытие" edge="1" parent="1" source="back" target="abs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1650.0" y="495.0" />
+              <mxPoint x="1650.0" y="495.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-5" value="UC2: идентификация / договор" edge="1" parent="1" source="front" target="abs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1990" y="1145" />
+              <mxPoint x="1990" y="365" />
+              <mxPoint x="1850" y="365" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-6" value="UC4/5/6: коды и уведомления" edge="1" parent="1" source="ib" target="gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1085.0" y="250.0" />
+              <mxPoint x="1085.0" y="487.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-7" value="Доставка через оператора" edge="1" parent="1" source="gateway" target="telco" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1570.0" y="487.5" />
+              <mxPoint x="1570.0" y="495.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-8" value="UC2: событие лида&#10;через сервис депозитов / Kafka" edge="1" parent="1" source="site" target="cc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="830.0" y="940.0" />
+              <mxPoint x="830.0" y="940.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-9" value="UC2: обращение и звонок" edge="1" parent="1" source="operator" target="cc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;strokeColor=#475569;labelBackgroundColor=#ffffff;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="510.0" y="1147.5" />
+              <mxPoint x="510.0" y="1160.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="customer" value="Действующий клиент&#10;[Person]" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#fef3c7;strokeColor=#b45309;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="150" width="300" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="new" value="Новый клиент&#10;[Person]&#10;Идентификация в отделении" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#fef3c7;strokeColor=#b45309;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="650" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="ib" value="Интернет-банк + депозитное расширение&#10;[Software System]&#10;Каталог, заявка, OTP, статусы" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#2563eb;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="650" y="160" width="420" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="site" value="Сайт банка&#10;[Software System]&#10;Общие ставки / лиды" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#2563eb;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="650" y="650" width="360" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="abs" value="АБС&#10;[Software System]&#10;Ставки, заявки, договоры" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#2563eb;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="160" width="400" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="back" value="Кредитный / депозитный бэк-офис&#10;[Person]&#10;Разные права на данные" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#fef3c7;strokeColor=#b45309;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="650" width="400" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="cc" value="Система кол-центра банка&#10;[Software System]&#10;Лид → звонок менеджера" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#2563eb;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="650" y="1090" width="360" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="front" value="Фронт-офис&#10;[Person]&#10;Проверка документов" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#fef3c7;strokeColor=#b45309;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="1090" width="360" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="gateway" value="СМС-шлюз банка&#10;[Software System]" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#dbeafe;strokeColor=#2563eb;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="430" width="300" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="telco" value="Телеком-оператор&#10;[External Software System]&#10;Доставляет СМС клиенту" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1740" y="430" width="360" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="operator" value="Оператор банка&#10;[Person]" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#fef3c7;strokeColor=#b45309;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1090" width="300" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="MVP: ручная обработка в АБС; подтверждение заявки не означает открытие.&#10;Новый клиент посещает отделение. АБС — единственный источник факта открытия и утверждённых ставок." style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#fff7ed;strokeColor=#c2410c;fontColor=#0f172a;fontSize=16;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1290" width="2030" height="110" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
